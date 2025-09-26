@@ -1,0 +1,67 @@
+<div class="landing-container" [class.loaded]="isLoaded">
+  <!-- Animated Background -->
+  <div class="background-animation">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+      <div class="shape shape-6"></div>
+    </div>
+    
+    <div class="pulse-circles">
+      <div class="pulse-circle circle-1"></div>
+      <div class="pulse-circle circle-2"></div>
+      <div class="pulse-circle circle-3"></div>
+    </div>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="content">
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">Welcome to</span>
+          <span class="title-main">Health Tracker</span>
+        </h1>
+        <p class="hero-subtitle">
+          Your personal journey to better health starts here. Track, monitor, and improve your wellness with our comprehensive health management platform.
+        </p>
+        
+        <div class="cta-buttons">
+          <button class="btn btn-primary" (click)="navigateToHome()">
+            <span>Get Started</span>
+            <div class="btn-shine"></div>
+          </button>
+          <button class="btn btn-secondary" (click)="navigateToArticles()">
+            <span>Learn More</span>
+            <div class="btn-shine"></div>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <section class="features-preview">
+      <div class="feature-cards">
+        <div class="feature-card card-1">
+          <div class="feature-icon">📊</div>
+          <h3>Track Progress</h3>
+          <p>Monitor your health metrics with intuitive dashboards</p>
+        </div>
+        
+        <div class="feature-card card-2">
+          <div class="feature-icon">🎯</div>
+          <h3>Set Goals</h3>
+          <p>Create personalized health and fitness objectives</p>
+        </div>
+        
+        <div class="feature-card card-3">
+          <div class="feature-icon">📱</div>
+          <h3>Stay Connected</h3>
+          <p>Access your health data anywhere, anytime</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

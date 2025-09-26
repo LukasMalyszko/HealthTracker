@@ -1,0 +1,22 @@
+.app-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+// Main Content
+.main-content {
+  min-height: 100vh;
+  
+  &.with-navbar {
+    padding-top: 70px; // Account for fixed navbar
+  }
+}
+
+// Responsive Design
+@media (max-width: 480px) {
+  .main-content {
+    &.with-navbar {
+      padding-top: 60px;
+    }
+  }
+}

@@ -1,0 +1,143 @@
+<div class="home" [class.home--loaded]="isLoaded">
+  <!-- Animated Background -->
+  <div class="home__background">
+    <div class="home__shapes">
+      <div class="home__shape home__shape--1"></div>
+      <div class="home__shape home__shape--2"></div>
+      <div class="home__shape home__shape--3"></div>
+      <div class="home__shape home__shape--4"></div>
+    </div>
+    
+    <div class="home__circles">
+      <div class="home__circle home__circle--1"></div>
+      <div class="home__circle home__circle--2"></div>
+    </div>
+  </div>
+  
+  <div class="home__content">
+    <header class="home__header">
+      <div class="home__header-content">
+        <h1 class="home__title">
+          <span class="home__title-text">Today's Health Habits</span>
+        </h1>
+        <p class="home__date">{{ currentDate | date:'fullDate' }}</p>
+        
+        <!-- Progress Overview -->
+        <div class="progress">
+          <div class="progress__header">
+            <h2 class="progress__title">Daily Progress</h2>
+            <div class="progress__stats">
+              <span class="progress__completed">{{ completedCount }}</span>
+              <span class="progress__separator">/</span>
+              <span class="progress__total">{{ totalHabits }}</span>
+            </div>
+          </div>
+          
+          <div class="progress__bar">
+            <div class="progress__fill" [style.width.%]="getProgressPercentage()"></div>
+          </div>
+          
+          <div class="progress__percentage">{{ getProgressPercentage() }}% Complete</div>
+          
+          <button class="progress__reset" (click)="resetAllHabits()" *ngIf="completedCount > 0">
+            <span class="progress__reset-text">🔄 Reset All</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Habits Categories -->
+    <section class="habits">
+      <div class="habits__categories">
+        <!-- Health Category -->
+        <div class="category">
+          <h3 class="category__title">
+            <span class="category__icon">{{ getCategoryIcon('health') }}</span>
+            <span class="category__text">Health & Nutrition</span>
+          </h3>
+          <div class="category__grid">
+            <div class="habit" 
+                 *ngFor="let habit of getHabitsByCategory('health'); trackBy: trackByHabitId"
+                 [class.habit--completed]="habit.completed"
+                 (click)="toggleHabit(habit)">
+              <div class="habit__icon">{{ habit.icon }}</div>
+              <div class="habit__name">{{ habit.name }}</div>
+              <div class="habit__check">
+                <div class="habit__checkmark" [class.habit__checkmark--checked]="habit.completed">✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Fitness Category -->
+        <div class="category">
+          <h3 class="category__title">
+            <span class="category__icon">{{ getCategoryIcon('fitness') }}</span>
+            <span class="category__text">Fitness & Movement</span>
+          </h3>
+          <div class="category__grid">
+            <div class="habit" 
+                 *ngFor="let habit of getHabitsByCategory('fitness'); trackBy: trackByHabitId"
+                 [class.habit--completed]="habit.completed"
+                 (click)="toggleHabit(habit)">
+              <div class="habit__icon">{{ habit.icon }}</div>
+              <div class="habit__name">{{ habit.name }}</div>
+              <div class="habit__check">
+                <div class="habit__checkmark" [class.habit__checkmark--checked]="habit.completed">✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mental Wellbeing Category -->
+        <div class="category">
+          <h3 class="category__title">
+            <span class="category__icon">{{ getCategoryIcon('mental') }}</span>
+            <span class="category__text">Mental Wellbeing</span>
+          </h3>
+          <div class="category__grid">
+            <div class="habit" 
+                 *ngFor="let habit of getHabitsByCategory('mental'); trackBy: trackByHabitId"
+                 [class.habit--completed]="habit.completed"
+                 (click)="toggleHabit(habit)">
+              <div class="habit__icon">{{ habit.icon }}</div>
+              <div class="habit__name">{{ habit.name }}</div>
+              <div class="habit__check">
+                <div class="habit__checkmark" [class.habit__checkmark--checked]="habit.completed">✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Productivity Category -->
+        <div class="category">
+          <h3 class="category__title">
+            <span class="category__icon">{{ getCategoryIcon('productivity') }}</span>
+            <span class="category__text">Productivity</span>
+          </h3>
+          <div class="category__grid">
+            <div class="habit" 
+                 *ngFor="let habit of getHabitsByCategory('productivity'); trackBy: trackByHabitId"
+                 [class.habit--completed]="habit.completed"
+                 (click)="toggleHabit(habit)">
+              <div class="habit__icon">{{ habit.icon }}</div>
+              <div class="habit__name">{{ habit.name }}</div>
+              <div class="habit__check">
+                <div class="habit__checkmark" [class.habit__checkmark--checked]="habit.completed">✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Motivational Section -->
+    <section class="celebration" *ngIf="getProgressPercentage() === 100">
+      <div class="celebration__section">
+        <div class="celebration__icon">🎉</div>
+        <h3 class="celebration__title">Congratulations!</h3>
+        <p class="celebration__message">You've completed all your habits for today! Keep up the great work!</p>
+      </div>
+    </section>
+  </div>
+</div>
