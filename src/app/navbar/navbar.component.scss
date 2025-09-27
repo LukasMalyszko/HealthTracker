@@ -34,11 +34,6 @@
     }
   }
   
-  &__brand-icon {
-    font-size: 2rem;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  
   &__brand-text {
     font-size: 1.5rem;
     font-weight: bold;
@@ -99,10 +94,6 @@
         animation: bounce 1s ease-in-out;
       }
     }
-  }
-  
-  &__link-icon {
-    font-size: 1.2rem;
   }
   
   &__mobile-toggle {

@@ -3,7 +3,6 @@
   <div class="navbar__container">
     <!-- Logo/Brand -->
     <div class="navbar__brand" (click)="navigateAndCloseMenu('/home')">
-      <span class="navbar__brand-icon">🏥</span>
       <span class="navbar__brand-text">HealthTracker</span>
     </div>
     
@@ -12,14 +11,12 @@
       <a routerLink="/home" 
          class="navbar__link" 
          [class.navbar__link--active]="isCurrentRoute('/home')">
-        <span class="navbar__link-icon">📊</span>
         <span class="navbar__link-text">Dashboard</span>
       </a>
       
       <a routerLink="/articles" 
          class="navbar__link" 
          [class.navbar__link--active]="isCurrentRoute('/articles')">
-        <span class="navbar__link-icon">📚</span>
         <span class="navbar__link-text">Articles</span>
       </a>
     </div>
@@ -39,14 +36,12 @@
     <a (click)="navigateAndCloseMenu('/home')" 
        class="navbar__mobile-link" 
        [class.navbar__mobile-link--active]="isCurrentRoute('/home')">
-      <span class="navbar__mobile-link-icon">📊</span>
       <span class="navbar__mobile-link-text">Dashboard</span>
     </a>
     
     <a (click)="navigateAndCloseMenu('/articles')" 
        class="navbar__mobile-link" 
        [class.navbar__mobile-link--active]="isCurrentRoute('/articles')">
-      <span class="navbar__mobile-link-icon">📚</span>
       <span class="navbar__mobile-link-text">Articles</span>
     </a>
   </div>
