@@ -1,4 +1,5 @@
-// Navbar Block
+@import '/variables';
+
 .navbar {
   position: fixed;
   top: 0;
@@ -13,7 +14,7 @@
 
   // Navbar Elements
   &__container {
-    max-width: 1200px;
+    max-width: $page-width;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;

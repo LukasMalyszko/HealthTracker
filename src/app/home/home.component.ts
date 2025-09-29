@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface Habit {
@@ -39,13 +39,19 @@ export class HomeComponent implements OnInit {
     { id: 12, name: 'Connect with a friend', icon: '👫', completed: false, category: 'mental' }
   ];
   
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  
   ngOnInit(): void {
     setTimeout(() => {
       this.isLoaded = true;
     }, 100);
     
     this.updateStats();
-    this.loadTodayProgress();
+    
+    // Only load progress in browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadTodayProgress();
+    }
   }
   
   toggleHabit(habit: Habit): void {
@@ -84,24 +90,40 @@ export class HomeComponent implements OnInit {
   }
   
   private saveTodayProgress(): void {
-    const today = this.currentDate.toDateString();
-    const progress = this.habits.map(h => ({ id: h.id, completed: h.completed }));
-    localStorage.setItem(`habits_${today}`, JSON.stringify(progress));
+    if (!isPlatformBrowser(this.platformId)) {
+      return; // Skip saving on server
+    }
+    
+    try {
+      const today = this.currentDate.toDateString();
+      const progress = this.habits.map(h => ({ id: h.id, completed: h.completed }));
+      localStorage.setItem(`habits_${today}`, JSON.stringify(progress));
+    } catch (error) {
+      console.error('Error saving progress:', error);
+    }
   }
   
   private loadTodayProgress(): void {
-    const today = this.currentDate.toDateString();
-    const saved = localStorage.getItem(`habits_${today}`);
+    if (!isPlatformBrowser(this.platformId)) {
+      return; // Skip loading on server
+    }
     
-    if (saved) {
-      const progress = JSON.parse(saved);
-      progress.forEach((p: any) => {
-        const habit = this.habits.find(h => h.id === p.id);
-        if (habit) {
-          habit.completed = p.completed;
-        }
-      });
-      this.updateStats();
+    try {
+      const today = this.currentDate.toDateString();
+      const saved = localStorage.getItem(`habits_${today}`);
+      
+      if (saved) {
+        const progress = JSON.parse(saved);
+        progress.forEach((p: any) => {
+          const habit = this.habits.find(h => h.id === p.id);
+          if (habit) {
+            habit.completed = p.completed;
+          }
+        });
+        this.updateStats();
+      }
+    } catch (error) {
+      console.error('Error loading progress:', error);
     }
   }
   

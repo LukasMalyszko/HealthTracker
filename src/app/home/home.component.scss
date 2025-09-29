@@ -1,11 +1,11 @@
 // Home Block
+@import '/variables';
+
 .home {
   min-height: 100vh; // Height will be adjusted by app component padding
   position: relative;
   overflow-x: hidden;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: white;
-  font-family: "Arial", sans-serif;
+  background: $bg-gradient;
 
   // Home Modifier - Loaded State
   &--loaded {
@@ -58,14 +58,14 @@
     justify-content: center;
     gap: 1rem;
   }
-
+  
   &__title-icon {
     font-size: 3rem;
     animation: bounce 2s ease-in-out infinite;
   }
-
+  
   &__title-text {
-    background: linear-gradient(45deg, #fff, #f0f8ff);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -76,138 +76,18 @@
     opacity: 0.9;
     margin-bottom: 2rem;
   }
-}
 
-.background-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.floating-shapes {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  .shape {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    animation: float 8s ease-in-out infinite;
-
-    &.shape-1 {
-      width: 60px;
-      height: 60px;
-      top: 10%;
-      left: 5%;
-      animation-delay: 0s;
+  @media (max-width: 768px) {
+    &__content {
+      padding: 1rem;
     }
 
-    &.shape-2 {
-      width: 80px;
-      height: 80px;
-      top: 60%;
-      right: 10%;
-      animation-delay: -2s;
-    }
-
-    &.shape-3 {
-      width: 50px;
-      height: 50px;
-      bottom: 20%;
-      left: 15%;
-      animation-delay: -4s;
-    }
-
-    &.shape-4 {
-      width: 70px;
-      height: 70px;
-      top: 30%;
-      right: 25%;
-      animation-delay: -6s;
+    &__title {
+      font-size: 2.2rem;
+      flex-direction: column;
+      gap: 0.5rem;
     }
   }
-}
-
-.pulse-circles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  .pulse-circle {
-    position: absolute;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    animation: pulse 6s ease-in-out infinite;
-
-    &.circle-1 {
-      width: 200px;
-      height: 200px;
-      top: 20%;
-      right: 5%;
-      animation-delay: 0s;
-    }
-
-    &.circle-2 {
-      width: 150px;
-      height: 150px;
-      bottom: 15%;
-      left: 10%;
-      animation-delay: -3s;
-    }
-  }
-}
-
-// Content Styles
-.content {
-  position: relative;
-  z-index: 2;
-  padding: 2rem;
-  min-height: 100vh;
-}
-
-// Header Section
-.header-section {
-  margin-bottom: 3rem;
-}
-
-.header-content {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease-out;
-}
-
-.page-title {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  .title-icon {
-    font-size: 3rem;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  .title-text {
-    background: linear-gradient(45deg, #fff, #f0f8ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-}
-
-.date-info {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 2rem;
 }
 
 .progress {
@@ -255,7 +135,7 @@
   &__bar {
     width: 100%;
     height: 12px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(246, 224, 224);
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 1rem;
@@ -299,7 +179,7 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    max-width: 1200px;
+    max-width: $page-width;
     margin: 0 auto;
   }
 }
@@ -344,7 +224,7 @@
 .habit {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(246, 224, 224);
   border-radius: 15px;
   padding: 1.5rem;
   cursor: pointer;
@@ -358,7 +238,7 @@
   &:hover {
     transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgb(246, 224, 224, 0.7);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   }
 
@@ -392,7 +272,7 @@
   &__checkmark {
     width: 30px;
     height: 30px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgb(246, 224, 224);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -436,10 +316,10 @@
   }
 
   &__icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: bounce 1s ease-in-out infinite;
-    }
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease-in-out infinite;
+  }
 }
 
 // Animations
@@ -516,21 +396,23 @@
 
 // Responsive Design
 @media (max-width: 768px) {
-  .content {
-    padding: 1rem;
+  .home {
+    &__content {
+      padding: 1rem;
+    }
+
+    &__title {
+      font-size: 2.2rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
 
-  .page-title {
-    font-size: 2.2rem;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .progress-card {
+  .progress {
     padding: 1.5rem;
   }
 
-  .habits-grid {
+  .habits {
     grid-template-columns: 1fr;
   }
 

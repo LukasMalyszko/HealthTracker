@@ -1,1 +1,107 @@
-<p>articles works!</p>
+<div class="articles">
+  <div class="articles__container">
+    <!-- Header Section -->
+    <div class="articles__header">
+      <h1 class="articles__title">Health Articles</h1>
+      <p class="articles__subtitle">Stay informed with the latest health insights and wellness tips</p>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="articles__controls">
+      <div class="articles__search">
+        <i class="fas fa-search articles__search-icon"></i>
+        <input 
+          type="text" 
+          class="articles__search-input" 
+          placeholder="Search articles..."
+          [(ngModel)]="searchTerm"
+          (input)="filterArticles()"
+        >
+      </div>
+      
+      <div class="articles__filter">
+        <select 
+          class="articles__filter-select"
+          [(ngModel)]="selectedCategory"
+          (change)="filterArticles()"
+        >
+          <option value="">All Categories</option>
+          <option value="nutrition">Nutrition</option>
+          <option value="fitness">Fitness</option>
+          <option value="mental-health">Mental Health</option>
+          <option value="wellness">Wellness</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="articles__loading">
+      <div class="articles__spinner"></div>
+      <p>Loading articles...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="articles__error">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>{{ error }}</p>
+      <button class="articles__retry-btn" (click)="loadArticles()">
+        <i class="fas fa-redo"></i>
+        Try Again
+      </button>
+    </div>
+
+    <!-- Articles Grid -->
+    <div *ngIf="!loading && !error" class="articles__grid">
+      <div 
+        *ngFor="let article of filteredArticles" 
+        class="articles__card"
+        (click)="openArticle(article)"
+      >
+        <div class="articles__card-image">
+          <img 
+            [src]="article.imageUrl || 'assets/images/default-article.jpg'" 
+            [alt]="article.title"
+            class="articles__image"
+          >
+          <div class="articles__category-badge">
+            {{ article.category }}
+          </div>
+        </div>
+        
+        <div class="articles__card-content">
+          <h3 class="articles__card-title">{{ article.title }}</h3>
+          <p class="articles__card-excerpt">{{ article.excerpt }}</p>
+          
+          <div class="articles__card-meta">
+            <div class="articles__author">
+              <i class="fas fa-user-md"></i>
+              <span>{{ article.author }}</span>
+            </div>
+            <div class="articles__date">
+              <i class="fas fa-calendar"></i>
+              <span>{{ article.publishedAt | date:'MMM dd, yyyy' }}</span>
+            </div>
+          </div>
+          
+          <div class="articles__card-footer">
+            <div class="articles__read-time">
+              <i class="fas fa-clock"></i>
+              <span>{{ article.readTime }} min read</span>
+            </div>
+            <button class="articles__read-btn">
+              Read More
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading && !error && filteredArticles.length === 0" class="articles__empty">
+      <i class="fas fa-search"></i>
+      <h3>No articles found</h3>
+      <p>Try adjusting your search terms or filters</p>
+    </div>
+  </div>
+</div>
