@@ -220,24 +220,8 @@
       visibility: visible;
     }
   }
-}
 
-// Animations
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-3px);
-  }
-  60% {
-    transform: translateY(-1px);
-  }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-  .navbar {
+  @media (max-width: 768px) {
     &__menu {
       display: none;
     }
@@ -254,10 +238,8 @@
       font-size: 1.3rem;
     }
   }
-}
 
-@media (max-width: 480px) {
-  .navbar {
+  @media (max-width: 480px) {
     &__container {
       height: 60px;
     }
@@ -277,5 +259,21 @@
         padding-left: 2rem;
       }
     }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
   }
 }
