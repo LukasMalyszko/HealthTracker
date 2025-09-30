@@ -1,5 +1,5 @@
 // Home Block
-@use '/variables';
+@use "/variables";
 
 .home {
   min-height: 100vh;
@@ -48,12 +48,7 @@
     justify-content: center;
     gap: 1rem;
   }
-  
-  &__title-icon {
-    font-size: 3rem;
-    animation: bounce 2s ease-in-out infinite;
-  }
-  
+
   &__title-text {
     background: variables.$bg-gradient-secondary;
     -webkit-background-clip: text;
@@ -185,19 +180,6 @@
     gap: 1rem;
   }
 
-  &:nth-child(1) {
-    animation: fadeInUp 1s ease-out 0.3s both;
-  }
-  &:nth-child(2) {
-    animation: fadeInUp 1s ease-out 0.5s both;
-  }
-  &:nth-child(3) {
-    animation: fadeInUp 1s ease-out 0.7s both;
-  }
-  &:nth-child(4) {
-    animation: fadeInUp 1s ease-out 0.9s both;
-  }
-
   &__title {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -236,11 +218,7 @@
     background: rgba(74, 222, 128, 0.2);
     border-color: rgba(74, 222, 128, 0.5);
 
-    .habit-icon {
-      animation: bounce 0.6s ease-in-out;
-    }
-
-    .habit-name {
+    .habit__name {
       text-decoration: line-through;
       opacity: 0.8;
     }
@@ -312,40 +290,6 @@
   }
 }
 
-// Animations
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-15px) rotate(180deg);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.3;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes bounce {
   0%,
   20%,
@@ -385,7 +329,7 @@
 }
 
 // Responsive Design
-@media (max-width: 768px) {
+@media (max-width: variables.$breakpoint-md) {
   .home {
     &__content {
       padding: 1rem;
@@ -406,39 +350,34 @@
     grid-template-columns: 1fr;
   }
 
-  .habit-card {
+  .habit {
     padding: 1rem;
 
-    .habit-icon {
+    &__icon {
       font-size: 2rem;
       min-width: 50px;
     }
 
-    .habit-name {
+    &__name {
       font-size: 1rem;
     }
   }
 
-  .category-group {
-    .category-title {
+  .category {
+    &__title {
       font-size: 1.5rem;
     }
   }
 }
 
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 1.8rem;
-
-    .title-icon {
-      font-size: 2.5rem;
+@media (max-width: variables.$breakpoint-sm) {
+  .home {
+    &__title {
+      font-size: 1.8rem;
     }
-  }
 
-  .floating-shapes .shape {
-    &.shape-3,
-    &.shape-4 {
-      display: none;
+    &__title-icon {
+      font-size: 2.5rem;
     }
   }
 }
