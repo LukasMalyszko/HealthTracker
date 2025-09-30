@@ -222,7 +222,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: variables.$breakpoint-md) {
     &__menu {
       display: none;
     }
@@ -240,7 +240,7 @@
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: variables.$breakpoint-sm) {
     &__container {
       height: 60px;
     }
