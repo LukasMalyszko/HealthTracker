@@ -1,5 +1,4 @@
 <div class="landing" [class.landing--loaded]="isLoaded">
-    <!-- Animated Background -->
     <div class="background-animation">
         <div class="landing__shapes">
             <div class="landing__shape landing__shape--1"></div>
@@ -31,14 +30,21 @@
                 </p>
 
                 <div class="hero__buttons">
-                    <button class="button button--primary" (click)="navigateToHome()">
-                        <span>Get Started</span>
-                        <div class="button__shine"></div>
-                    </button>
-                    <button class="button button--secondary" (click)="navigateToArticles()">
-                        <span>Learn More</span>
-                        <div class="button__shine"></div>
-                    </button>
+                    <app-button 
+                        variant="primary" 
+                        iconPosition="right"
+                        (clicked)="navigateToHome()"
+                    >
+                        Get Started
+                    </app-button>
+                    
+                    <app-button 
+                        variant="secondary" 
+                        iconPosition="left"
+                        (clicked)="navigateToArticles()"
+                    >
+                        Learn More
+                    </app-button>
                 </div>
             </div>
         </header>

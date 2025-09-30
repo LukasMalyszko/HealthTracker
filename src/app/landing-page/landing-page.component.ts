@@ -1,32 +1,32 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { ButtonComponent } from '../shared/button/button.component';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './landing-page.component.html',
-  styleUrl: './landing-page.component.scss'
+  styleUrls: ['./landing-page.component.scss']
 })
+
 export class LandingPageComponent implements OnInit {
-  
   isLoaded = false;
-  
-  private router = inject(Router);
-  
-  ngOnInit(): void {
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
     setTimeout(() => {
       this.isLoaded = true;
     }, 100);
   }
-  
-  navigateToHome(): void {
+
+  navigateToHome() {
     this.router.navigate(['/home']);
   }
-  
-  navigateToArticles(): void {
+
+  navigateToArticles() {
     this.router.navigate(['/articles']);
   }
-
 }

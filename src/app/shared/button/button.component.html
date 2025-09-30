@@ -1,0 +1,19 @@
+<button 
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="getButtonClasses()"
+  (click)="onClick()"
+>
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="button__spinner">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Button Content -->
+  <span class="button__content" [class.button__content--hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+
+  <!-- Shine Effect -->
+  <div class="button__shine"></div>
+</button>
