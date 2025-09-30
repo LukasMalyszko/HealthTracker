@@ -1,4 +1,4 @@
-@use '/variables';
+@use "/variables";
 
 .landing {
   min-height: 100vh;
@@ -144,6 +144,22 @@
     flex-direction: column;
     justify-content: center;
   }
+
+  @media (max-width: variables.$breakpoint-md) {
+    &__content {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: variables.$breakpoint-sm) {
+    &__shape {
+      &--1,
+      &--3,
+      &--5 {
+        display: none;
+      }
+    }
+  }
 }
 
 // Hero Block
@@ -197,6 +213,51 @@
     justify-content: center;
     flex-wrap: wrap;
     animation: fadeInUp 1s ease-out 1.4s both;
+  }
+
+  @media (max-width: variables.$breakpoint-md) {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__title-line {
+      font-size: 1.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+
+    &__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button {
+      max-width: 250px;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: variables.$breakpoint-sm) {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__title-line {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__line {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -260,6 +321,13 @@
   &__description {
     opacity: 0.9;
     line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
 }
 
@@ -329,58 +397,5 @@
   }
   50% {
     background-position: 100% 50%;
-  }
-}
-
-// Responsive Design
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-
-    .title-line {
-      font-size: 1.5rem;
-    }
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn {
-    width: 80%;
-    max-width: 250px;
-  }
-
-  .feature-cards {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .content {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-
-    .title-line {
-      font-size: 1.2rem;
-    }
-  }
-
-  .floating-shapes .shape {
-    &.shape-1,
-    &.shape-3,
-    &.shape-5 {
-      display: none;
-    }
   }
 }

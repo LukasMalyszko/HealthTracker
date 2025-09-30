@@ -10,6 +10,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
+  width: 100%;
 
   // Button Elements
   &__text {
@@ -60,5 +61,9 @@
     .button__shine {
       left: 100%;
     }
+  }
+
+  @media (max-width: variables.$breakpoint-md) {
+    
   }
 }
