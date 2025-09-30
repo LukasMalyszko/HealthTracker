@@ -1,4 +1,4 @@
-@import '/variables';
+@use '/variables';
 
 .navbar {
   position: fixed;
@@ -6,15 +6,15 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fffffff2;
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ffffff33;
+  box-shadow: 0 4px 20px #0000001a;
   transition: all 0.3s ease;
 
   // Navbar Elements
   &__container {
-    max-width: $page-width;
+    max-width: variables.$page-width;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
@@ -38,7 +38,7 @@
   &__brand-text {
     font-size: 1.5rem;
     font-weight: bold;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: variables.$bg-gradient-secondary;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

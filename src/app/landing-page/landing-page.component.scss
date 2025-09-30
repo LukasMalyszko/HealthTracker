@@ -1,10 +1,10 @@
-@import '/variables';
+@use '/variables';
 
 .landing {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: variables.$bg-gradient-secondary;
   color: white;
   font-family: "Arial", sans-serif;
 
@@ -326,39 +326,7 @@
     opacity: 0.9;
     line-height: 1.5;
   }
-
-  // Feature Card Modifiers
-
-  // Feature Card States
 }
-
-// // Scroll Indicator Block
-// .scroll-indicator {
-//   position: absolute;
-//   bottom: 2rem;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   text-align: center;
-//   opacity: 0.7;
-//   animation: fadeIn 2s ease-out 3s both;
-
-//   // Scroll Indicator Elements
-//   &__arrow {
-//     width: 30px;
-//     height: 30px;
-//     border: 2px solid white;
-//     border-top: none;
-//     border-left: none;
-//     transform: rotate(45deg);
-//     margin: 0 auto 0.5rem;
-//     animation: bounce 2s ease-in-out infinite;
-//   }
-
-//   &__text {
-//     font-size: 0.9rem;
-//     opacity: 0.8;
-//   }
-// }
 
 // Animations
 @keyframes float {

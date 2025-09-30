@@ -1,12 +1,12 @@
-@import '/variables';
+@use '/variables';
 
 .articles {
   min-height: 100vh;
-  background: $bg-gradient;
+  background: variables.$bg-gradient;
   padding-top: 90px;
 
   &__container {
-    max-width: $page-width;
+    max-width: variables.$page-width;
     margin: 0 auto;
     padding: 2rem;
   }
@@ -19,7 +19,7 @@
   &__title {
     font-size: 3rem;
     font-weight: bold;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: variables.$bg-gradient-secondary;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -152,7 +152,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.8rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: variables.$bg-gradient-secondary;
     color: white;
     border: none;
     border-radius: 12px;
@@ -193,7 +193,7 @@
       }
 
       .articles__read-btn {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: variables.$bg-gradient-secondary;
         color: white;
       }
     }
